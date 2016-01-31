@@ -38,5 +38,62 @@ public class Calculadora {
 
         System.out.println("La lista de valores ingresados es: " + Arrays.toString(valores));
 
+        $msg = "Las siguientes son las operaciónes estadística que desea realizar \n";
+        $msg += "[1] Desviación Estándard \n";
+        $msg += "[2] Media Aritmética \n";
+        $msg += "[3] Salir del programa";
+        $msg += "Ingrese su selección [1] o [2]:";
+
+        System.out.println($msg);
+
+        int op = in.nextInt();
+
+        if (op == 1) {
+            System.out.println("Usted ha seleccionado Desviación Estandard");
+
+            double resultado = calcularDesviacion(valores);
+
+            System.out.println("El resultado del cálculo es: " + resultado);
+        }
+        else if(op == 2) {
+            System.out.println("Usted ha seleccionado Media Aritmética");
+
+            double resultado = calcularMediaAritmetica(valores);
+
+            System.out.println("El resultado del cálculo es: " + resultado);
+        }
+        else {
+            System.out.println("El valor ingresado no existe \n");
+        }
+    }
+
+    public static double calcularDesviacion(int[] lista) {
+
+        double avg = calcularMediaAritmetica(lista);
+        double sum = 0;
+        double sigma = 0;
+
+        for (int i = 0; i < lista.length; i++) {
+
+            sum = sum + Math.pow((lista[i] - avg), 2);
+        }
+
+        sigma = Math.sqrt(sum / (lista.length - 1));
+
+        return sigma;
+    }
+
+    public static double calcularMediaAritmetica(int[] lista) {
+
+        int sum = 0;
+        double media = 0;
+
+        for(int i = 0; i<lista.length; i++) {
+            sum = sum + lista[i];
+        }
+
+        media = sum / lista.length;
+
+        return media;
     }
 }
