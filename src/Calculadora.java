@@ -3,6 +3,7 @@
  */
 
 import java.util.Scanner;
+import java.util.Arrays;
 
 public class Calculadora {
 
@@ -24,6 +25,18 @@ public class Calculadora {
         int n = in.nextInt();
 
         System.out.println("El valor ingresado es: " + n);
+
+        int[] valores;
+
+        valores = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            System.out.println("Ingrese el número " + i + ":");
+            int num = in.nextInt();
+            valores[i] = num;
+        }
+
+        System.out.println("La lista de valores ingresados es: " + Arrays.toString(valores));
 
     }
 }
