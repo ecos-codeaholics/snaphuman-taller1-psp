@@ -1,6 +1,9 @@
 /**
  * Created by snaphuman on 1/27/16.
  */
+
+import java.util.Scanner;
+
 public class Calculadora {
 
     public static void main (String[] args) {
@@ -14,6 +17,13 @@ public class Calculadora {
         $msg += "estadística que desea aplicar sobre los valores";
 
         System.out.println($msg);
+
+        // Proceso de entrada de datos
+        Scanner in = new Scanner(System.in);
+        System.out.print("Ingrese el número que define la candidad de valores a ingresar: \n");
+        int n = in.nextInt();
+
+        System.out.println("El valor ingresado es: " + n);
 
     }
 }
