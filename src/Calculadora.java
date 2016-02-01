@@ -1,5 +1,10 @@
 /**
- * Created by snaphuman on 1/27/16.
+ * Calculadora.java
+ * Propósito: Calcula el promedio y la desviacion estándard de una lista de valores dada.
+ *
+ * @author Fabián Hernández
+ * @version 1.0 01/27/16
+ * @licence GNU/GPL v3
  */
 
 import java.util.Scanner;
@@ -7,13 +12,21 @@ import java.util.Arrays;
 
 public class Calculadora {
 
-    public static void main (String[] args) {
+    /**
+     * Recibe los datos ingresados por el usuario a través de la
+     * linea de comandos
+     *
+     * @param args
+     * @return No hay valor de retorno
+     */
+    public static void main(String[] args) {
 
+        // Composición del mensaje de bienvenida
         String $msg;
 
         $msg = "Bienvenido a la calculadora estadística \n";
         $msg += "Este programa le permitirá definir una lista de valores cuya longitud \n";
-        $msg += "será indicada por el usted. \n";
+        $msg += "será indicada por usted. \n";
         $msg += "Una vez definidos los valores, usted podrá elegir el tipo de operación \n";
         $msg += "estadística que desea aplicar sobre los valores";
 
@@ -26,6 +39,7 @@ public class Calculadora {
 
         System.out.println("El valor ingresado es: " + n);
 
+        // Array que contiene la lista de valores para realizar el calculo
         int[] valores;
 
         valores = new int[n];
@@ -38,6 +52,7 @@ public class Calculadora {
 
         System.out.println("La lista de valores ingresados es: " + Arrays.toString(valores));
 
+        // Composición del mensaje para la selección de la operación
         $msg = "Las siguientes son las operaciónes estadística que desea realizar \n";
         $msg += "[1] Desviación Estándard \n";
         $msg += "[2] Media Aritmética \n";
@@ -65,13 +80,21 @@ public class Calculadora {
         else {
             System.out.println("El valor ingresado no existe \n");
         }
+
+        in.close();
     }
 
+    /**
+     * Calcula la desviación estandard de una lista de valores dados.
+     *
+     * @param lista Array de números eneros
+     * @return sigma Double con el resultado del cálculo
+     */
     public static double calcularDesviacion(int[] lista) {
 
         double avg = calcularMediaAritmetica(lista);
         double sum = 0;
-        double sigma = 0;
+        double sigma;
 
         for (int i = 0; i < lista.length; i++) {
 
@@ -83,6 +106,12 @@ public class Calculadora {
         return sigma;
     }
 
+    /**
+     * Calcula la media aritmética de una lista de valores dados.
+     *
+     * @param lista Array de números eneros
+     * @return media Double con el resultado del cálculo
+     */
     public static double calcularMediaAritmetica(int[] lista) {
 
         int sum = 0;
