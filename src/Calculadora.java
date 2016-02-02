@@ -34,19 +34,31 @@ public class Calculadora {
 
         // Proceso de entrada de datos
         Scanner in = new Scanner(System.in);
-        System.out.print("Ingrese el número que define la candidad de valores a ingresar: \n");
-        int n = in.nextInt();
 
+        System.out.print("Ingrese el número que define la candidad de valores a ingresar: \n");
+
+        while (!in.hasNextInt()) {
+            System.out.println("Debe ingresar un número entero");
+            in.nextLine();
+        }
+
+        int n = in.nextInt();
         System.out.println("El valor ingresado es: " + n);
 
         // Array que contiene la lista de valores para realizar el calculo
-        int[] valores;
+        double[] valores;
 
-        valores = new int[n];
+        valores = new double[n];
 
         for (int i = 0; i < n; i++) {
+
             System.out.println("Ingrese el número " + i + ":");
-            int num = in.nextInt();
+            while (!in.hasNextDouble()) {
+                System.out.println("Debe ingresar un número");
+                in.nextLine();
+            }
+
+            double num = in.nextDouble();
             valores[i] = num;
         }
 
@@ -90,7 +102,7 @@ public class Calculadora {
      * @param lista Array de números eneros
      * @return sigma Double con el resultado del cálculo
      */
-    public static double calcularDesviacion(int[] lista) {
+    public static double calcularDesviacion(double[] lista) {
 
         double avg = calcularMediaAritmetica(lista);
         double sum = 0;
@@ -112,9 +124,9 @@ public class Calculadora {
      * @param lista Array de números eneros
      * @return media Double con el resultado del cálculo
      */
-    public static double calcularMediaAritmetica(int[] lista) {
+    public static double calcularMediaAritmetica(double[] lista) {
 
-        int sum = 0;
+        double sum = 0;
         double media = 0;
 
         for(int i = 0; i<lista.length; i++) {
