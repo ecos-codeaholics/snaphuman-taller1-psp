@@ -96,14 +96,15 @@ public class Calculadora {
             }
         }
 
-        System.out.println("La lista de valores para ejecutar la operación es: " + Arrays.toString(valores));
+        System.out.println("La lista de valores para ejecutar la operación es: " + Arrays.toString(valores) + "\n");
 
         // Composición del mensaje para la selección de la operación
         $msg = "Las siguientes son las operaciónes estadísticas que puede realizar \n";
         $msg += "[1] Desviación Estándard \n";
         $msg += "[2] Media Aritmética \n";
-        $msg += "[3] Salir del programa \n";
-        $msg += "Ingrese su selección [1], [2] o [3]: \n";
+        $msg += "[3] Calcular ambas \n";
+        $msg += "[4] Salir del programa \n";
+        $msg += "Ingrese su selección [1], [2], [3] o [4]: \n";
         $msg += "> ";
 
         System.out.println($msg);
@@ -118,14 +119,29 @@ public class Calculadora {
             System.out.println("El resultado del cálculo es: " + resultado);
         }
         else if(op == 2) {
-            System.out.println("Usted ha seleccionado Media Aritmética");
+            System.out.println("Usted ha seleccionado Media Aritmética \n");
 
             double resultado = calcularMediaAritmetica(valores);
 
             System.out.println("El resultado del cálculo es: " + resultado);
         }
-        else {
-            System.out.println("El valor ingresado no existe \n");
+        else if (op == 3) {
+            System.out.println("Usted ha seleccionado calcular ambas \n");
+
+            double desviación = calcularDesviacion(valores);
+            double media = calcularMediaAritmetica(valores);
+
+            $msg = "La desviación estandar es: " + desviación + "\n";
+            $msg += "La media aritmetica es: " + media;
+
+            System.out.println($msg);
+        }
+        else if (op == 4) {
+            // TODO: metodo para futuras operaciones. ej: guardad log en base de datos
+            System.out.println("Ha elegido salir \n");
+        } else {
+            // TODO: preguntar nuevamente al usuario su elección
+            System.out.println("El valor no existe \n");
         }
 
         in.close();
