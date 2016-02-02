@@ -9,6 +9,7 @@
 
 import java.util.Scanner;
 import java.util.Arrays;
+import java.util.List;
 
 public class Calculadora {
 
@@ -24,59 +25,93 @@ public class Calculadora {
         // Composición del mensaje de bienvenida
         String $msg;
 
-        $msg = "Bienvenido a la calculadora estadística \n";
+        $msg = "Bienvenido a la calculadora estadística. \n";
+        $msg += "\n";
         $msg += "Este programa le permitirá definir una lista de valores cuya longitud \n";
-        $msg += "será indicada por usted. \n";
-        $msg += "Una vez definidos los valores, usted podrá elegir el tipo de operación \n";
-        $msg += "estadística que desea aplicar sobre los valores";
+        $msg += "será indicada por usted, una vez definidos los valores podrá elegir \n";
+        $msg += "el tipo de operación estadística que desea realizar sobre los valores \n";
+        $msg += "\n";
 
         System.out.println($msg);
 
         // Proceso de entrada de datos
         Scanner in = new Scanner(System.in);
 
-        System.out.print("Ingrese el número que define la candidad de valores a ingresar: \n");
+        $msg = "Por favor ingrese el numero que define la cantidad de valores a ingresar o \n";
+        $msg += "escriba la palabra 'Tarea' si quiere utilizar los valores predeterminados \n";
+        $msg += "> ";
 
-        while (!in.hasNextInt()) {
-            System.out.println("Debe ingresar un número entero");
+        System.out.print($msg);
+
+        // Expresión regular para validar las entradas (default|numeros)
+        String $regex = "(?i)\\btarea\\b|[0-9]{1,2}";
+
+        while (!in.hasNext($regex)) {
+            $msg = "Debe escribir un número entero o la palabra tarea \n";
+            $msg += "> ";
+            System.out.println($msg);
             in.nextLine();
         }
 
-        int n = in.nextInt();
-        System.out.println("El valor ingresado es: " + n);
+        String n = in.next($regex);
 
-        // Array que contiene la lista de valores para realizar el calculo
         double[] valores;
 
-        valores = new double[n];
+        if (n.contains("tarea")) {
 
-        for (int i = 0; i < n; i++) {
+            System.out.println("El valor ingresado es: " + n + "\n");
 
-            System.out.println("Ingrese el número " + i + ":");
-            while (!in.hasNextDouble()) {
-                System.out.println("Debe ingresar un número");
-                in.nextLine();
+            // Define valores predeterminados para realizar calculos
+            List<Integer> defaults = Arrays.asList(186, 699, 132, 272, 291, 331, 199, 1890, 788, 1601);
+            valores = new double[defaults.size()];
+
+            for (int i = 0; i < defaults.size(); i++) {
+                valores[i] = defaults.get(i);
             }
 
-            double num = in.nextDouble();
-            valores[i] = num;
+        } else  {
+
+            double v = Double.parseDouble(n);
+            System.out.println("El valor ingresado es: " + (int) v + "\n");
+
+            // Array que contiene la lista de valores ingresados por el
+            // usuario para realizar el calculo
+            valores = new double[(int) v];
+
+            for (int i = 0; i < v; i++) {
+
+                $msg = "Ingrese el número " + i + ": \n";
+                $msg += "> ";
+                System.out.println($msg);
+
+                while (!in.hasNextDouble()) {
+                    $msg = "Debe escribir un número \n";
+                    $msg += "> ";
+                    System.out.println($msg);
+                    in.nextLine();
+                }
+
+                double num = in.nextDouble();
+                valores[i] = num;
+            }
         }
 
-        System.out.println("La lista de valores ingresados es: " + Arrays.toString(valores));
+        System.out.println("La lista de valores para ejecutar la operación es: " + Arrays.toString(valores));
 
         // Composición del mensaje para la selección de la operación
-        $msg = "Las siguientes son las operaciónes estadística que desea realizar \n";
+        $msg = "Las siguientes son las operaciónes estadísticas que puede realizar \n";
         $msg += "[1] Desviación Estándard \n";
         $msg += "[2] Media Aritmética \n";
-        $msg += "[3] Salir del programa";
-        $msg += "Ingrese su selección [1] o [2]:";
+        $msg += "[3] Salir del programa \n";
+        $msg += "Ingrese su selección [1], [2] o [3]: \n";
+        $msg += "> ";
 
         System.out.println($msg);
 
         int op = in.nextInt();
 
         if (op == 1) {
-            System.out.println("Usted ha seleccionado Desviación Estandard");
+            System.out.println("Usted ha seleccionado Desviación Estandard \n");
 
             double resultado = calcularDesviacion(valores);
 
