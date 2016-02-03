@@ -9,4 +9,4 @@ Calculadora estadística
 * DONE El usuario debe tener la capacidad de ejecutar ambas operaciones: [Function, Design]
 * TODO El programa debe ser accedido a través de la web: [Environment, Design]
 * TODO El programa debe utilizar una base de datos: [Environment, Design]
-* TODO Escribir pruebas
+* DONE Escribir pruebas
