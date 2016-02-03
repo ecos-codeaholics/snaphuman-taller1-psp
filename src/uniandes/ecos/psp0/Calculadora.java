@@ -1,3 +1,4 @@
+package uniandes.ecos.psp0;
 /**
  * Calculadora.java
  * Propósito: Calcula el promedio y la desviacion estándard de una lista de valores dada.
@@ -187,5 +188,14 @@ public class Calculadora {
         media = sum / lista.length;
 
         return media;
+    }
+
+    public static boolean verificarLista(double[] lista) {
+
+        boolean valido;
+
+        valido = lista.length >= 2 ? true : false;
+
+        return valido;
     }
 }
