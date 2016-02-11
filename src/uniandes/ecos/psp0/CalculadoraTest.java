@@ -9,34 +9,46 @@ import static org.junit.Assert.*;
  */
 public class CalculadoraTest {
 
-    private final static double precision = 0.01;
+    private final static double precision = 0.05;
 
     @Test
     public void calcularDesviacion() {
 
-        double lista[] = new double[4];
+        double lista[] = new double[10];
 
-        lista[0] = 300;
-        lista[1] = 45.6;
-        lista[2] = 32;
-        lista[3] = 21;
+        lista[0] = 160;
+        lista[1] = 591;
+        lista[2] = 114;
+        lista[3] = 229;
+        lista[4] = 230;
+        lista[5] = 270;
+        lista[6] = 128;
+        lista[7] = 1657;
+        lista[8] = 624;
+        lista[9] = 1503;
 
         double result = Calculadora.calcularDesviacion(lista);
-        assertEquals(133.94, result, precision);
+        assertEquals(572.03, result, precision);
     }
 
     @Test
     public void calcularMediaAritmetica() {
 
-        double lista[] = new double[4];
+        double lista[] = new double[10];
 
-        lista[0] = 300;
-        lista[1] = 45.6;
-        lista[2] = 32;
-        lista[3] = 21;
+        lista[0] = 160;
+        lista[1] = 591;
+        lista[2] = 114;
+        lista[3] = 229;
+        lista[4] = 230;
+        lista[5] = 270;
+        lista[6] = 128;
+        lista[7] = 1657;
+        lista[8] = 624;
+        lista[9] = 1503;
 
         double result = Calculadora.calcularMediaAritmetica(lista);
-        assertEquals(99.65, result, precision);
+        assertEquals(550.6, result, precision);
     }
 
     @Test

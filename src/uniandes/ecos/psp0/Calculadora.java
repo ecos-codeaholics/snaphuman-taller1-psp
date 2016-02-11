@@ -39,16 +39,17 @@ public class Calculadora {
         Scanner in = new Scanner(System.in);
 
         $msg = "Por favor ingrese el numero que define la cantidad de valores a ingresar o \n";
-        $msg += "escriba la palabra 'Tarea' si quiere utilizar los valores predeterminados \n";
+        $msg += "escriba la palabra 'tabla1' o 'tabla2' si quiere utilizar los valores predeterminados \n";
         $msg += "> ";
 
         System.out.print($msg);
 
         // Expresión regular para validar las entradas (default|numeros)
-        String $regex = "(?i)\\btarea\\b|[0-9]{1,2}";
+        String $regex = "(?i)\\btabla1\\b|(?i)\\btabla2\\b|[0-9]{1,2}";
 
         while (!in.hasNext($regex)) {
-            $msg = "Debe escribir un número entero o la palabra tarea \n";
+
+            $msg = "Debe escribir un número entero o la palabra tabla1 o tabla2 \n";
             $msg += "> ";
             System.out.println($msg);
             in.nextLine();
@@ -58,18 +59,29 @@ public class Calculadora {
 
         double[] valores;
 
-        if (n.contains("tarea")) {
+        if (n.contains("tabla1")) {
 
             System.out.println("El valor ingresado es: " + n + "\n");
 
             // Define valores predeterminados para realizar calculos
-            List<Integer> defaults = Arrays.asList(186, 699, 132, 272, 291, 331, 199, 1890, 788, 1601);
+            List<Integer> defaults = Arrays.asList(160, 591, 114, 229, 230, 270, 128, 1657, 624, 1503);
             valores = new double[defaults.size()];
 
             for (int i = 0; i < defaults.size(); i++) {
                 valores[i] = defaults.get(i);
             }
 
+        } else if(n.contains("tabla2")) {
+
+            System.out.println("El valor ingresado es: " + n + "\n");
+
+            // Define valores predeterminados para realizar calculos
+            List<Double> defaults = Arrays.asList(15.0, 69.9, 6.5, 22.4, 28.4, 65.9, 19.4, 198.7, 38.8, 138.2);
+            valores = new double[defaults.size()];
+
+            for (int i = 0; i < defaults.size(); i++) {
+                valores[i] = defaults.get(i);
+            }
         } else  {
 
             double v = Double.parseDouble(n);
